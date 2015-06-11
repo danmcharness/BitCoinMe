@@ -1,0 +1,57 @@
+
+<!--
+    Tabs can be used nearly anywhere in your app, except inside of an ionContent directive
+    due to a CSS collision that can occur when ionTabs is placed inside ionContent.
+
+    Using ionNavView components to load components. This is important because it will allow
+    each of the tabs to maintain its own navigational history. It allows you to use a back button
+    that is only for a given tab instead of the whole app.
+
+    Tabs don’t require individual views
+    -----------------------------------
+    Tabs can contain any content you wish to put inside. Essentially a tabbed interface is really just one
+    large view that has only one tab displayed at once, but the other tabs exist in a hidden state. It would
+    be similar to having several pages of paper stacked on top of one another, and at any time you can
+    move a lower page to the top so it is visible.
+
+    The technique of using the ionNavView element inside of each tab gives us one major benefit - each
+    tab is able to have its own history. So instead of a stack of papers, it is now more like a stack of
+    books where the top most book is open to a particular page, and if we switched books we would
+    bookmark that page and return to the exact same spot later.
+
+    Essentially I think it boils down to how you use the tabs. I would classify two primary use cases:
+    tabs for providing navigation and tabs for fitting more content in a single view.
+
+    When using tabs for navigation, adding individual views is useful. This template will
+    demonstrate this use case.
+
+    Using tabs to fit more content into a single view would not benefit from individual views. For
+    example, you could use tabs in a weather app for displaying the current conditions. Since the current
+    condition information is likely loaded all at once from an API, and the information is logically
+    connected, you would probably use tabs to separate the condition information into simpler chunks.
+    Imagine there were three tabs, current conditions, weather map, and 10 day forecast.
+
+    The general recommendation is to consider if the content of the tabs could be logically placed into
+    one view and controller, then you probably don’t want to use individual ionNavView components.
+
+-->
+
+<ion-tabs class="tabs-icon-top tabs-positive">
+
+    <!--
+      The ui-sref attributes act like a normal href attribute to link to a particular state based on the name,
+      so instead of having a URL we have a state name (see related routes in app.js).
+
+      Even though only one of these three views will be visible, all three will be part of the same parent tabs view.
+    -->
+
+    <ion-tab title="Rates" icon-on="ion-social-bitcoin" icon-off="ion-social-bitcoin-outline" ui-sref="tabs.rates">
+        <ion-nav-view name="rates-tab"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="History" icon-on="ion-ios-analytics" icon-off="ion-ios-analytics-outline" ui-sref="tabs.history">
+        <ion-nav-view name="history-tab"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Currencies" icon-on="ion-ios-cog" icon-off="ion-ios-cog-outline" ui-sref="tabs.currencies">
+        <ion-nav-view name="currencies-tab"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>
